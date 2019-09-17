@@ -324,7 +324,7 @@ const CollectionItem = {
     <p>
       <router-link :to="'/' + collection.id">Tilbake</router-link>
     </p>
-    <table>
+    <table style="margin-bottom: 2em;">
       <tr v-for="(value, key) in item">
         <th valign="top" class="p-2">{{ key }}:</th>
         <td class="p-2">{{ value }}</td>
