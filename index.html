@@ -103,7 +103,8 @@ const collections = [
     default_sort: 'Drogebetegnelse:asc',
     fields: [
       {
-        key: 'Drogebetegnelse'
+        key: 'Drogebetegnelse',
+        cssClass: 'font-italic',
       },
       {
         key: 'Latinsk plantenavn'
@@ -120,7 +121,8 @@ const collections = [
     default_sort: 'Botanical name:asc',
     fields: [
       {
-        key: 'Botanical name'
+        key: 'Botanical name',
+        cssClass: 'font-italic',
       },
       {
         key: 'Family'
@@ -195,7 +197,7 @@ const Collection = {
         </thead>
         <tbody>
           <tr v-for="row in rows" :key="row['Drogebetegnelse']" class="clickable-row" @click="onRowClick(row)">
-            <td v-for="field in collection.fields" :key="field.key">{{ row[field.key] }}</td>
+            <td v-for="field in collection.fields" :key="field.key" :class="field.cssClass">{{ row[field.key] }}</td>
           </tr>
         </tbody>
       </table>
@@ -327,12 +329,16 @@ const CollectionItem = {
     <table style="margin-bottom: 2em;">
       <tr v-for="(value, key) in item">
         <th valign="top" class="p-2">{{ key }}:</th>
-        <td class="p-2">{{ value }}</td>
+        <td class="p-2" :class="fieldStyles[key]">{{ value }}</td>
       </tr>
     </table>
   </div>`,
   data: function() {
     return {
+      fieldStyles: {
+        'Drogebetegnelse':  'font-italic',
+        'Botanical name':  'font-italic',
+      },
       collection_id: null,
       item_id: null,
       collection: null,
